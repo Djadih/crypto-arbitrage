@@ -1,5 +1,8 @@
 import coinbase
 import binance
+import bitfinex
+
+import asyncio
 import time
 import datetime
 
@@ -17,8 +20,11 @@ def main():
 
         if highest_spread_percentage < spread_percentage:
             highest_spread_percentage = spread_percentage
-            print("New highest spread percentage:", highest_spread_percentage)
+            print("New highest spread percentage:", highest_spread_percentage, "%")
+        else:
+            print("Current highest spread percentage:", highest_spread_percentage, "%")
 
+        print()
 
         time.sleep(.5)
 
@@ -29,14 +35,16 @@ def print_statistics(prices):
 
     coinbase_price = float(prices["coinbase"])
     binance_price = float(prices["binance"])
+    bitfinex_price = float(prices["bitfinex"])
 
     spread = abs(coinbase_price - binance_price)
 
-    spread_percentage = (spread / max(coinbase_price, binance_price)) * 100
+    spread_percentage = round((spread / max(coinbase_price, binance_price)) * 100, 2)
 
     print("Coinbase:", coinbase_price)
     print("Binance:", binance_price)
-    print("Spread percentage:", spread_percentage, "\n")
+    print("Bitfinex:", bitfinex_price)
+    print("Spread percentage:", spread_percentage, "%")
 
     if spread_percentage > (.3):
         with open('spreads', 'a') as file: 
@@ -56,6 +64,9 @@ def gather_prices():
     
     binance_price = binance.get_price()
     prices.update({"binance" : binance_price})
+
+    bitfinex_price = asyncio.run(bitfinex.get_price())
+    prices.update({"bitfinex" : bitfinex_price})
 
     return prices
 
