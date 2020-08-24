@@ -39,7 +39,11 @@ def print_statistics(prices):
 
     spread = abs(coinbase_price - binance_price)
 
-    spread_percentage = round((spread / max(coinbase_price, binance_price)) * 100, 2)
+    coinbase_binance = round((spread / max(coinbase_price, binance_price)) * 100, 2)
+    coinbase_bitfinex = round((spread / max(coinbase_price, bitfinex_price)) * 100, 2)
+    binance_bitfinex = round((spread / max(binance_price, bitfinex_price)) * 100, 2)
+
+    spread_percentage = max(coinbase_binance, coinbase_bitfinex, binance_bitfinex)
 
     print("Coinbase:", coinbase_price)
     print("Binance:", binance_price)
@@ -48,7 +52,7 @@ def print_statistics(prices):
 
     if spread_percentage > (.3):
         with open('spreads', 'a') as file: 
-            line = ("Spread_percentage: " + str(spread_percentage) + " . Coinbase: " + str(coinbase_price) + " Binance: " + str(binance_price) + ". Time: " + str(datetime.datetime.now) + "\n")
+            line = ("Spread_percentage: " + str(spread_percentage) + " . Coinbase: " + str(coinbase_price) + " Binance: " + str(binance_price) + " Bitfinex: " + str(bitfinex_price) + ". Time: " + str(datetime.datetime.now) + "\n")
             file.write(line)
     
     return spread_percentage

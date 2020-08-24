@@ -8,7 +8,7 @@ async def get_price():
     # price is the 6th element of the ticker array
     # https://github.com/bitfinexcom/bitfinex-api-py/blob/729019b4c492a822d7074a8d21e274a3fbc6fab7/bfxapi/rest/bfx_rest.py#L152
 
-    return ticker[6]
+    return round(ticker[6], 2)
 
 # async def run():
 #     # ticker = await get_price()
