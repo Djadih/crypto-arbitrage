@@ -1,0 +1,31 @@
+{
+  "name": "stuff",
+  "version": "1.0.0",
+  "description": "blah",
+  "main": "main.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "execute": "node lib/main.js",
+    "main": "npm run build && npm run execute",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ethersproject/address": "^5.0.2",
+    "@ethersproject/contracts": "^5.0.2",
+    "@ethersproject/providers": "^5.0.5",
+    "@ethersproject/solidity": "^5.0.2",
+    "@uniswap/sdk": "^3.0.3-beta.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0"
+  }
+}
