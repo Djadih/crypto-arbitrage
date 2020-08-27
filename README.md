@@ -30,6 +30,10 @@ Written in js, based on uniswap developer documentation
     ```
     python arbitrager.py
     ```
+    
+Running the centralized script:
+
+![Running the centralized script](https://i.imgur.com/XIimLI1.png)
 ### Decentralized module
 1. Make sure you have npm and nodejs installed (sudo apt install both)
 2. Also need to have yarn installed (sudo apt install)
@@ -43,3 +47,6 @@ Written in js, based on uniswap developer documentation
     npm i
     npm run main
     ```
+Running the decentralized script:
+
+![Running the decentralized script](https://imgur.com/otG0PSv.png)
