@@ -1,3 +1,4 @@
-node-stuff/lib
-node-stuff/node_modules
-node-stuff/keys.txt
+decentralized/lib
+decentralized/node_modules
+decentralized/keys.txt
+__pycache__
